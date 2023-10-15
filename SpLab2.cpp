@@ -27,7 +27,7 @@ Automaton read_automaton(const string& filename) {
 
     int alphabet_size, states_size;
     file >> alphabet_size;
-    cout << "alphabet_size " << alphabet_size << endl;
+   // cout << "alphabet_size " << alphabet_size << endl;
 
     // Зчитування символів алфавіту
    //vector<char> alphabet(alphabet_size);
@@ -37,17 +37,17 @@ Automaton read_automaton(const string& filename) {
     
 
     file >> states_size >> automaton.start_state;
-    cout << "states_size " << states_size << endl;
-    cout << "automaton.start_state " << automaton.start_state << endl;
+   // cout << "states_size " << states_size << endl;
+    //cout << "automaton.start_state " << automaton.start_state << endl;
     int final_states_size;
     file >> final_states_size;
-    cout << "final_states_size " << final_states_size << endl;
+   // cout << "final_states_size " << final_states_size << endl;
     // Зчитування фінальних станів
     for (int i = 0; i < final_states_size; ++i) {
         int state;
         file >> state;
         automaton.final_states.insert(state);
-        cout << "final_state " << state << endl;
+      //  cout << "final_state " << state << endl;
     }
 
     int from, to;
