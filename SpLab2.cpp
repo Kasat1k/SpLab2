@@ -27,23 +27,27 @@ Automaton read_automaton(const string& filename) {
 
     int alphabet_size, states_size;
     file >> alphabet_size;
+    cout << "alphabet_size " << alphabet_size << endl;
 
     // Зчитування символів алфавіту
-    vector<char> alphabet(alphabet_size);
-    for (int i = 0; i < alphabet_size; i++) {
-        file >> alphabet[i];
-    }
+   //vector<char> alphabet(alphabet_size);
+   // for (int i = 0; i < alphabet_size; i++) {
+    //    file >> alphabet[i];
+    //}
+    
 
     file >> states_size >> automaton.start_state;
-
+    cout << "states_size " << states_size << endl;
+    cout << "automaton.start_state " << automaton.start_state << endl;
     int final_states_size;
     file >> final_states_size;
-
+    cout << "final_states_size " << final_states_size << endl;
     // Зчитування фінальних станів
     for (int i = 0; i < final_states_size; ++i) {
         int state;
         file >> state;
         automaton.final_states.insert(state);
+        cout << "final_state " << state << endl;
     }
 
     int from, to;
@@ -85,20 +89,17 @@ int main() {
         string w0, w1;
         cout << "Введіть фіксовану частину слова w0: ";
         cin >> w0;
+        cout << "Введіть слово w1: ";
+        cin >> w1;
 
-        do {
-            cout << "Введіть слово w1 (для виходу введіть out): ";
-            cin >> w1;
-            string w = w0 + w1;
-            if (!w1.empty()) {
-                if (is_accepted(automaton, w)) {
-                    cout << "Слово " << w << " приймається автоматом.\n";
-                }
-                else {
-                    cout << "Слово " << w << " не приймається автоматом.\n";
-                }
-            }
-        } while (w1!="out");
+        string w = w0 + w1;
+        if (is_accepted(automaton, w)) {
+            cout << "Слово " << w << " приймається автоматом.\n";
+        }
+        else {
+            cout << "Слово " << w << " не приймається автоматом.\n";
+        }
+
     }
     catch (const exception& e) {
         cerr << "Помилка: " << e.what() << "\n";
