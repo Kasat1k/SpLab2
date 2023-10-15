@@ -85,17 +85,20 @@ int main() {
         string w0, w1;
         cout << "Введіть фіксовану частину слова w0: ";
         cin >> w0;
-        cout << "Введіть слово w1: ";
-        cin >> w1;
 
-        string w = w0 + w1;
-        if (is_accepted(automaton, w)) {
-            cout << "Слово " << w << " приймається автоматом.\n";
-        }
-        else {
-            cout << "Слово " << w << " не приймається автоматом.\n";
-        }
-
+        do {
+            cout << "Введіть слово w1 (для виходу введіть out): ";
+            cin >> w1;
+            string w = w0 + w1;
+            if (!w1.empty()) {
+                if (is_accepted(automaton, w)) {
+                    cout << "Слово " << w << " приймається автоматом.\n";
+                }
+                else {
+                    cout << "Слово " << w << " не приймається автоматом.\n";
+                }
+            }
+        } while (w1!="out");
     }
     catch (const exception& e) {
         cerr << "Помилка: " << e.what() << "\n";
